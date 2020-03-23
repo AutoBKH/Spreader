@@ -1,0 +1,30 @@
+RMQ init new instance
+Declaring Queues
+Declare a durable queue: queue_for_no_context, and bind it to amq.topic exchange with route: 0oka
+Declare a durable queue: cA, and bind it to amq.topic exchange with route: 1oka
+Declare a durable queue: cB, and bind it to amq.topic exchange with route: 2oka
+enqueue message with routing key: 0oka, and body: b'1111this is my first message!1111'
+enqueue message with routing key: 1oka, and body: b'2222this is my second message!2222'
+closing connection
+RMQ init new instance
+RMQ init new instance
+RMQ init new instance
+RMQ init new instance
+RMQ init new instance
+Declaring Queues
+Declare a durable queue: queue_for_no_context, and bind it to amq.topic exchange with route: 0oka
+Declare a durable queue: cA, and bind it to amq.topic exchange with route: 1oka
+Declare a durable queue: cB, and bind it to amq.topic exchange with route: 2oka
+enqueue message with routing key: 0oka, and body: b'1111this is my first message!1111'
+enqueue message with routing key: 1oka, and body: b'2222this is my second message!2222'
+closing connection
+RMQ init new instance
+Declaring Queues
+Declare a durable queue: queue_for_no_context, and bind it to amq.topic exchange with route: 0oka
+Declare a durable queue: cA, and bind it to amq.topic exchange with route: 1oka
+Declare a durable queue: cB, and bind it to amq.topic exchange with route: 2oka
+enqueue message with routing key: 0oka, and body: b'1111this is my first message!1111'
+enqueue message with routing key: 1oka, and body: b'2222this is my second message!2222'
+closing connection
+RMQ init new instance
+RMQ init new instance

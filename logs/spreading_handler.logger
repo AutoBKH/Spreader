@@ -1,0 +1,10 @@
+skipping all next messages with same context: 
+skipping all next messages with same context: 
+skipping all next messages with same context: contextA
+skipping all next messages with same context: contextA
+skipping all next messages with same context: contextB
+[INFO] - 2020-03-23 22:11:55,644 - spreading_handler.logger - skipping all next messages with same context: 
+[INFO] - 2020-03-23 22:11:55,645 - spreading_handler.logger - skipping all next messages with same context: 
+[INFO] - 2020-03-23 22:11:55,645 - spreading_handler.logger - skipping all next messages with same context: contextA
+[INFO] - 2020-03-23 22:11:55,645 - spreading_handler.logger - skipping all next messages with same context: contextA
+[INFO] - 2020-03-23 22:11:55,645 - spreading_handler.logger - skipping all next messages with same context: contextB
