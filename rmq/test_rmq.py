@@ -1,0 +1,44 @@
+# !/usr/bin/env
+
+import pytest
+import uuid
+
+from rmq.rmq import RabbitClient, QUEUES_DETAILS
+
+FIRST_MESSAGE = b"1111this is my first message!1111"
+SECOND_MESSAGE = b"2222this is my second message!2222"
+
+
+@pytest.fixture(name='rabbit')
+def init_queue():
+    return RabbitClient()
+
+
+def test_delete_queues(rabbit):
+    rabbit.delete_hahaha()
+
+
+# def test_rmq_client(rabbit):
+#     rabbit.enqueue(routing_key=QUEUES_DETAILS[0]["routing_key"], body=FIRST_MESSAGE)
+#     # consumer_tag = uuid.uuid1().hex
+#     # rabbit.basic_consume(
+#     #     queue=QUEUES_DETAILS[0]["queue"],
+#     #     on_message_callback=first_message_callback,
+#     #     consumer_tag=consumer_tag
+#     # )
+#
+#     rabbit.enqueue(routing_key=QUEUES_DETAILS[1]["routing_key"], body=SECOND_MESSAGE)
+#     # rabbit.basic_consume(queue=QUEUES_DETAILS[1]["queue"], on_message_callback=second_message_callback)
+#
+#     rabbit.close_connection()
+
+
+# helping functions
+def first_message_callback(ct, ch, method, properties, body):
+    assert body == FIRST_MESSAGE
+    ch.basic_cancel(consumer_tag=ct, nowait=False)
+
+
+def second_message_callback(ct, ch, method, properties, body):
+    assert body == SECOND_MESSAGE
+    ch.basic_cancel('ct')
