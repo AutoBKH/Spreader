@@ -2,7 +2,6 @@
 
 from rmq.rmq import QUEUES_DETAILS
 
-
 WAITING = "waiting"
 COMPLETED = "Completed"
 
@@ -73,7 +72,6 @@ mock_data = [
         "status": WAITING,
         "destination": QUEUES_DETAILS[1]["routing_key"],
     },
-
 
     # contextB
     {
@@ -204,3 +202,7 @@ def get_waiting_messages_by_order():
         },
     ]
 
+
+def change_message_status(message_id, new_status):
+    print("message_id: " + message_id, "new_status: " + new_status)
+    return True
