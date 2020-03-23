@@ -4,10 +4,11 @@ import time
 
 from utils.utils import get_logger
 from db_handler_mock import get_latest_completed_for_every_context, get_waiting_messages_by_order, change_message_status
+from rmq.rmq import RabbitClient
 
 LOGGER_PATH = r'C:\Users\Shani Hochma\PycharmProjects\ShaniIsWorking\logs\spreading_handler.logger'
 LOGGER_NAME = 'spreading_handler.logger'
-logger = get_logger(LOGGER_NAME, LOGGER_PATH)
+logger = get_logger(LOGGER_NAME)
 
 """
     * At this implementations, there are some assumptions:
@@ -48,14 +49,20 @@ def get_first_index_of_next_context(msgs, i):
     return i
 
 
-def send_message(m):
+def send_message(m, rmq):
     sending_status = WIP
-    logger.info("changing status to 'Sending' in db for message: '%s'", m["message_id"])
-    change_result = change_message_status(m["message_id"], "Sending")
-    if change_result:
+    message_id = m["message_id"]
+    logger.info("changing status to 'Sending' in db for message: '%s'", message_id)
+    is_successfully_changed = change_message_status(message_id, "Sending")
+    if is_successfully_changed:
         routing_key = m["destination"]
-        logger.info("enqueue message: %s to RabbitMQ with routing key '%s'", m["message_id"], m["destination"])
-        # TODO: send message to RabbitMQ by message destination
+        logger.info(
+            "enqueue message with id: '%s' to RabbitMQ with routing key '%s' and body: '%s'",
+            message_id,
+            routing_key,
+            m["body"]
+        )
+        rmq.enqueue(routing_key=routing_key, body=m["body"])
 
 
 # this message called in case of message enqueue success.
@@ -75,32 +82,36 @@ def on_nack(m):
     sending_status = FAILURE
 
 
-if __name__ == "__main__":
-
-    last_completed_for_every_context = get_latest_completed_for_every_context()
-    messages = get_waiting_messages_by_order()
-
+def spread_messages(cache, msgs):
     messages_length = len(messages)
     index = 0
 
     while index < messages_length:
-        ready_to_send = is_ready_to_send(last_completed_for_every_context, messages, index)
+        ready_to_send = is_ready_to_send(cache, msgs, index)
         if ready_to_send:
-            logger.info("message with id: '%s' is ready to be sent", messages[index]["message_id"])
-            send_message(messages[index])
-            while sending_status == WIP:    # waiting for enqueue result
+            logger.info("message with id: '%s' is ready to be sent", msgs[index]["message_id"])
+            send_message(msgs[index], rabbit)
+            while sending_status == WIP:  # waiting for enqueue result
                 time.sleep(0.1)
             if sending_status == FAILURE:
                 logger.error(
                     "failed enqueue message with id: '%s', skipping all messages with same context",
-                    messages[index]["message_id"]
+                    msgs[index]["message_id"]
                 )
-                index = get_first_index_of_next_context(messages, index)
+                index = get_first_index_of_next_context(msgs, index)
                 sending_status = READY
         else:
             logger.warning(
                 "message with id: '%s' can't be sent yet. waiting to it's prev message id: '%s'",
-                messages[index]["message_id"],
-                messages[index]["prev_message_id"]
+                msgs[index]["message_id"],
+                msgs[index]["prev_message_id"]
             )
-            index = get_first_index_of_next_context(messages, index)
+            index = get_first_index_of_next_context(msgs, index)
+
+
+if __name__ == "__main__":
+    rabbit = RabbitClient()
+    while True:
+        last_completed_for_every_context = get_latest_completed_for_every_context()
+        messages = get_waiting_messages_by_order()
+        spread_messages(last_completed_for_every_context, messages)

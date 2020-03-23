@@ -18,7 +18,7 @@ EXCHANGE = "amq.topic"
 
 LOGGER_PATH = r'C:\Users\Shani Hochma\PycharmProjects\ShaniIsWorking\logs\rmq.logger'
 LOGGER_NAME = 'rmq.logger'
-logger = get_logger(LOGGER_NAME, LOGGER_PATH)
+logger = get_logger(LOGGER_NAME)
 
 
 def message_callback(ct, ch, method, properties, body):

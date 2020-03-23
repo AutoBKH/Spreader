@@ -112,3 +112,6 @@ def test_get_first_index_of_next_context():
     assert get_first_index_of_next_context(WAITING_MESSAGES, 3) == 5
     assert get_first_index_of_next_context(WAITING_MESSAGES, 4) == 5
     assert get_first_index_of_next_context(WAITING_MESSAGES, 5) == 7
+
+#   TODO: check 'send_message' func
+#   TODO: check 'spread_messages' func

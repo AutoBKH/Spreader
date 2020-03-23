@@ -8,3 +8,13 @@ skipping all next messages with same context: contextB
 [INFO] - 2020-03-23 22:11:55,645 - spreading_handler.logger - skipping all next messages with same context: contextA
 [INFO] - 2020-03-23 22:11:55,645 - spreading_handler.logger - skipping all next messages with same context: contextA
 [INFO] - 2020-03-23 22:11:55,645 - spreading_handler.logger - skipping all next messages with same context: contextB
+[INFO] - 2020-03-23 22:35:54,712 - spreading_handler.logger - skipping all next messages with same context: ''
+[INFO] - 2020-03-23 22:35:54,713 - spreading_handler.logger - skipping all next messages with same context: ''
+[INFO] - 2020-03-23 22:35:54,713 - spreading_handler.logger - skipping all next messages with same context: 'contextA'
+[INFO] - 2020-03-23 22:35:54,713 - spreading_handler.logger - skipping all next messages with same context: 'contextA'
+[INFO] - 2020-03-23 22:35:54,713 - spreading_handler.logger - skipping all next messages with same context: 'contextB'
+[INFO] - 2020-03-23 22:36:07,687 - spreading_handler.logger - skipping all next messages with same context: ''
+[INFO] - 2020-03-23 22:36:07,688 - spreading_handler.logger - skipping all next messages with same context: ''
+[INFO] - 2020-03-23 22:36:07,688 - spreading_handler.logger - skipping all next messages with same context: 'contextA'
+[INFO] - 2020-03-23 22:36:07,688 - spreading_handler.logger - skipping all next messages with same context: 'contextA'
+[INFO] - 2020-03-23 22:36:07,688 - spreading_handler.logger - skipping all next messages with same context: 'contextB'
