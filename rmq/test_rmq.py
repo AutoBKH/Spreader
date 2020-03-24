@@ -16,11 +16,9 @@ def init_queue():
 def test_rmq_client(rabbit):
     status = rabbit.enqueue(routing_key=QUEUES_DETAILS[0]["routing_key"], body=FIRST_MESSAGE)
     assert status is True
-    # consumer_tag = uuid.uuid1().hex
     rabbit.basic_consume(
         queue=QUEUES_DETAILS[0]["queue"],
         on_message_callback=first_message_callback,
-        consumer_tag=consumer_tag
     )
 
     status = rabbit.enqueue(routing_key=QUEUES_DETAILS[1]["routing_key"], body=SECOND_MESSAGE)
