@@ -13,19 +13,22 @@ def init_queue():
     return RabbitClient()
 
 
-# def test_rmq_client(rabbit):
-#     rabbit.enqueue(routing_key=QUEUES_DETAILS[0]["routing_key"], body=FIRST_MESSAGE)
-#     # consumer_tag = uuid.uuid1().hex
-#     # rabbit.basic_consume(
-#     #     queue=QUEUES_DETAILS[0]["queue"],
-#     #     on_message_callback=first_message_callback,
-#     #     consumer_tag=consumer_tag
-#     # )
-#
-#     rabbit.enqueue(routing_key=QUEUES_DETAILS[1]["routing_key"], body=SECOND_MESSAGE)
-#     # rabbit.basic_consume(queue=QUEUES_DETAILS[1]["queue"], on_message_callback=second_message_callback)
-#
-#     rabbit.close_connection()
+def test_rmq_client(rabbit):
+    status = rabbit.enqueue(routing_key=QUEUES_DETAILS[0]["routing_key"], body=FIRST_MESSAGE)
+    assert status is True
+    # consumer_tag = uuid.uuid1().hex
+    rabbit.basic_consume(
+        queue=QUEUES_DETAILS[0]["queue"],
+        on_message_callback=first_message_callback,
+        consumer_tag=consumer_tag
+    )
+
+    status = rabbit.enqueue(routing_key=QUEUES_DETAILS[1]["routing_key"], body=SECOND_MESSAGE)
+    assert status is True
+
+    # # rabbit.basic_consume(queue=QUEUES_DETAILS[1]["queue"], on_message_callback=second_message_callback)
+
+    rabbit.close_connection()
 
 
 # helping functions

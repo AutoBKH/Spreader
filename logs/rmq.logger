@@ -1,30 +1,384 @@
-RMQ init new instance
-Declaring Queues
-Declare a durable queue: queue_for_no_context, and bind it to amq.topic exchange with route: 0oka
-Declare a durable queue: cA, and bind it to amq.topic exchange with route: 1oka
-Declare a durable queue: cB, and bind it to amq.topic exchange with route: 2oka
-enqueue message with routing key: 0oka, and body: b'1111this is my first message!1111'
-enqueue message with routing key: 1oka, and body: b'2222this is my second message!2222'
-closing connection
-RMQ init new instance
-RMQ init new instance
-RMQ init new instance
-RMQ init new instance
-RMQ init new instance
-Declaring Queues
-Declare a durable queue: queue_for_no_context, and bind it to amq.topic exchange with route: 0oka
-Declare a durable queue: cA, and bind it to amq.topic exchange with route: 1oka
-Declare a durable queue: cB, and bind it to amq.topic exchange with route: 2oka
-enqueue message with routing key: 0oka, and body: b'1111this is my first message!1111'
-enqueue message with routing key: 1oka, and body: b'2222this is my second message!2222'
-closing connection
-RMQ init new instance
-Declaring Queues
-Declare a durable queue: queue_for_no_context, and bind it to amq.topic exchange with route: 0oka
-Declare a durable queue: cA, and bind it to amq.topic exchange with route: 1oka
-Declare a durable queue: cB, and bind it to amq.topic exchange with route: 2oka
-enqueue message with routing key: 0oka, and body: b'1111this is my first message!1111'
-enqueue message with routing key: 1oka, and body: b'2222this is my second message!2222'
-closing connection
-RMQ init new instance
-RMQ init new instance
+{
+    "time": "2020-03-24 20:44:50,989",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "RMQ init new instance"
+}
+{
+    "time": "2020-03-24 20:44:50,990",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "establishing tcp connection..."
+}
+{
+    "time": "2020-03-24 20:44:51,006",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "Declaring Queues"
+}
+{
+    "time": "2020-03-24 20:44:51,007",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "Declare a durable queue: 'queue_for_no_context', and bind it to 'amq.topic' exchange with routing_key: '0oka'"
+}
+{
+    "time": "2020-03-24 20:44:51,016",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "Declare a durable queue: 'cA', and bind it to 'amq.topic' exchange with routing_key: '1oka'"
+}
+{
+    "time": "2020-03-24 20:44:51,018",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "Declare a durable queue: 'cB', and bind it to 'amq.topic' exchange with routing_key: '2oka'"
+}
+{
+    "time": "2020-03-24 20:44:51,020",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "turn on delivery confirmations..."
+}
+{
+    "time": "2020-03-24 20:44:51,022",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "trying enqueue a message with routing key: 0oka, and body: message 2"
+}
+{
+    "time": "2020-03-24 20:44:51,031",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "enqueue with routing_key: '0oka', and body: 'message 2' was successful"
+}
+{
+    "time": "2020-03-24 20:44:51,032",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "trying enqueue a message with routing key: 0oka, and body: message 3"
+}
+{
+    "time": "2020-03-24 20:44:51,037",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "enqueue with routing_key: '0oka', and body: 'message 3' was successful"
+}
+{
+    "time": "2020-03-24 20:44:51,037",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "trying enqueue a message with routing key: 0oka, and body: message 4"
+}
+{
+    "time": "2020-03-24 20:44:51,041",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "enqueue with routing_key: '0oka', and body: 'message 4' was successful"
+}
+{
+    "time": "2020-03-24 20:44:51,041",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "trying enqueue a message with routing key: 1oka, and body: message 2, contextA"
+}
+{
+    "time": "2020-03-24 20:44:51,046",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "enqueue with routing_key: '1oka', and body: 'message 2, contextA' was successful"
+}
+{
+    "time": "2020-03-24 20:44:51,047",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "trying enqueue a message with routing key: 1oka, and body: message 3, contextA"
+}
+{
+    "time": "2020-03-24 20:44:51,052",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "enqueue with routing_key: '1oka', and body: 'message 3, contextA' was successful"
+}
+{
+    "time": "2020-03-24 21:12:28,515",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "RMQ init new instance"
+}
+{
+    "time": "2020-03-24 21:12:28,516",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "establishing tcp connection..."
+}
+{
+    "time": "2020-03-24 21:12:38,528",
+    "name": "rmq.logger",
+    "level": "ERROR",
+    "message": "can't establish a tcp connection. error: 'TCP connection attempt timed out: '10.100.102.80'/(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('10.100.102.80', 5672))'"
+}
+{
+    "time": "2020-03-24 21:13:20,761",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "RMQ init new instance"
+}
+{
+    "time": "2020-03-24 21:13:20,761",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "establishing tcp connection..."
+}
+{
+    "time": "2020-03-24 21:13:20,785",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "Declaring Queues"
+}
+{
+    "time": "2020-03-24 21:13:20,785",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "Declare a durable queue: 'queue_for_no_context', and bind it to 'amq.topic' exchange with routing_key: '0oka'"
+}
+{
+    "time": "2020-03-24 21:13:20,791",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "Declare a durable queue: 'cA', and bind it to 'amq.topic' exchange with routing_key: '1oka'"
+}
+{
+    "time": "2020-03-24 21:13:20,793",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "Declare a durable queue: 'cB', and bind it to 'amq.topic' exchange with routing_key: '2oka'"
+}
+{
+    "time": "2020-03-24 21:13:20,797",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "Declare a durable queue: 'cC', and bind it to 'amq.topic' exchange with routing_key: '3oka'"
+}
+{
+    "time": "2020-03-24 21:13:20,809",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "turn on delivery confirmations..."
+}
+{
+    "time": "2020-03-24 21:13:20,811",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "trying enqueue a message with routing key: 0oka, and body: message 2"
+}
+{
+    "time": "2020-03-24 21:13:20,820",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "enqueue with routing_key: '0oka', and body: 'message 2' was successful"
+}
+{
+    "time": "2020-03-24 21:13:20,820",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "trying enqueue a message with routing key: 0oka, and body: message 3"
+}
+{
+    "time": "2020-03-24 21:13:20,824",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "enqueue with routing_key: '0oka', and body: 'message 3' was successful"
+}
+{
+    "time": "2020-03-24 21:13:20,825",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "trying enqueue a message with routing key: 0oka, and body: message 4"
+}
+{
+    "time": "2020-03-24 21:13:20,829",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "enqueue with routing_key: '0oka', and body: 'message 4' was successful"
+}
+{
+    "time": "2020-03-24 21:13:20,830",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "trying enqueue a message with routing key: 1oka, and body: message 2, contextA"
+}
+{
+    "time": "2020-03-24 21:13:20,835",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "enqueue with routing_key: '1oka', and body: 'message 2, contextA' was successful"
+}
+{
+    "time": "2020-03-24 21:13:20,836",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "trying enqueue a message with routing key: 1oka, and body: message 3, contextA"
+}
+{
+    "time": "2020-03-24 21:13:20,840",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "enqueue with routing_key: '1oka', and body: 'message 3, contextA' was successful"
+}
+{
+    "time": "2020-03-24 21:13:20,841",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "trying enqueue a message with routing key: 3oka, and body: message 1, contextC"
+}
+{
+    "time": "2020-03-24 21:13:20,845",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "enqueue with routing_key: '3oka', and body: 'message 1, contextC' was successful"
+}
+{
+    "time": "2020-03-24 21:13:20,846",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "trying enqueue a message with routing key: 3oka, and body: message 2, contextC"
+}
+{
+    "time": "2020-03-24 21:13:20,849",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "enqueue with routing_key: '3oka', and body: 'message 2, contextC' was successful"
+}
+{
+    "time": "2020-03-24 21:13:28,422",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "RMQ init new instance"
+}
+{
+    "time": "2020-03-24 21:13:28,423",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "establishing tcp connection..."
+}
+{
+    "time": "2020-03-24 21:13:28,439",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "Declaring Queues"
+}
+{
+    "time": "2020-03-24 21:13:28,439",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "Declare a durable queue: 'queue_for_no_context', and bind it to 'amq.topic' exchange with routing_key: '0oka'"
+}
+{
+    "time": "2020-03-24 21:13:28,456",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "Declare a durable queue: 'cA', and bind it to 'amq.topic' exchange with routing_key: '1oka'"
+}
+{
+    "time": "2020-03-24 21:13:28,458",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "Declare a durable queue: 'cB', and bind it to 'amq.topic' exchange with routing_key: '2oka'"
+}
+{
+    "time": "2020-03-24 21:13:28,461",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "Declare a durable queue: 'cC', and bind it to 'amq.topic' exchange with routing_key: '3oka'"
+}
+{
+    "time": "2020-03-24 21:13:28,462",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "turn on delivery confirmations..."
+}
+{
+    "time": "2020-03-24 21:13:28,464",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "trying enqueue a message with routing key: 0oka, and body: message 2"
+}
+{
+    "time": "2020-03-24 21:13:28,473",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "enqueue with routing_key: '0oka', and body: 'message 2' was successful"
+}
+{
+    "time": "2020-03-24 21:13:28,474",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "trying enqueue a message with routing key: 0oka, and body: message 3"
+}
+{
+    "time": "2020-03-24 21:13:28,483",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "enqueue with routing_key: '0oka', and body: 'message 3' was successful"
+}
+{
+    "time": "2020-03-24 21:13:28,484",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "trying enqueue a message with routing key: 0oka, and body: message 4"
+}
+{
+    "time": "2020-03-24 21:13:28,489",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "enqueue with routing_key: '0oka', and body: 'message 4' was successful"
+}
+{
+    "time": "2020-03-24 21:13:28,489",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "trying enqueue a message with routing key: 1oka, and body: message 2, contextA"
+}
+{
+    "time": "2020-03-24 21:13:28,494",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "enqueue with routing_key: '1oka', and body: 'message 2, contextA' was successful"
+}
+{
+    "time": "2020-03-24 21:13:28,495",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "trying enqueue a message with routing key: 1oka, and body: message 3, contextA"
+}
+{
+    "time": "2020-03-24 21:13:28,500",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "enqueue with routing_key: '1oka', and body: 'message 3, contextA' was successful"
+}
+{
+    "time": "2020-03-24 21:13:28,501",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "trying enqueue a message with routing key: 3oka, and body: message 1, contextC"
+}
+{
+    "time": "2020-03-24 21:13:28,504",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "enqueue with routing_key: '3oka', and body: 'message 1, contextC' was successful"
+}
+{
+    "time": "2020-03-24 21:13:28,505",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "trying enqueue a message with routing key: 3oka, and body: message 2, contextC"
+}
+{
+    "time": "2020-03-24 21:13:28,508",
+    "name": "rmq.logger",
+    "level": "INFO",
+    "message": "enqueue with routing_key: '3oka', and body: 'message 2, contextC' was successful"
+}

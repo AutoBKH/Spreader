@@ -47,7 +47,7 @@ mock_data = [
     # contextA
     {
         "time": "2020-01-01 01:00.000",
-        "message_id": "1",
+        "message_id": "5",
         "prev_message_id": None,
         "context": "contextA",
         "body": "message 1, contextA",
@@ -56,8 +56,8 @@ mock_data = [
     },
     {
         "time": "2020-01-01 02:10.000",
-        "message_id": "2",
-        "prev_message_id": "1",
+        "message_id": "6",
+        "prev_message_id": "5",
         "context": "contextA",
         "body": "message 2, contextA",
         "status": WAITING,
@@ -65,8 +65,8 @@ mock_data = [
     },
     {
         "time": "2020-01-01 02:50.000",
-        "message_id": "3",
-        "prev_message_id": "2",
+        "message_id": "7",
+        "prev_message_id": "6",
         "context": "contextA",
         "body": "message 3, contextA",
         "status": WAITING,
@@ -76,7 +76,7 @@ mock_data = [
     # contextB
     {
         "time": "2020-01-01 10:10.000",
-        "message_id": "1",
+        "message_id": "8",
         "prev_message_id": None,
         "context": "contextB",
         "body": "message 1, contextB",
@@ -85,8 +85,8 @@ mock_data = [
     },
     {
         "time": "2020-01-01 11:00.000",
-        "message_id": "3",
-        "prev_message_id": "2",
+        "message_id": "10",
+        "prev_message_id": "9",
         "context": "contextB",
         "body": "message 3, contextB",
         "status": WAITING,
@@ -94,8 +94,8 @@ mock_data = [
     },
     {
         "time": "2020-01-01 12:00.000",
-        "message_id": "4",
-        "prev_message_id": "3",
+        "message_id": "11",
+        "prev_message_id": "10",
         "context": "contextB",
         "body": "message 4, contextB",
         "status": WAITING,
@@ -109,7 +109,7 @@ def get_latest_completed_for_every_context():
     return {
         "contextA": {
             "time": "2020-01-01 01:00.000",
-            "message_id": "1",
+            "message_id": "5",
             "prev_message_id": None,
             "context": "contextA",
             "body": "message 1, contextA",
@@ -118,7 +118,7 @@ def get_latest_completed_for_every_context():
         },
         "contextB": {
             "time": "2020-01-01 10:10.000",
-            "message_id": "1",
+            "message_id": "8",
             "prev_message_id": None,
             "context": "contextB",
             "body": "message 1, contextB",
@@ -164,8 +164,8 @@ def get_waiting_messages_by_order():
         # contextA
         {
             "time": "2020-01-01 02:10.000",
-            "message_id": "2",
-            "prev_message_id": "1",
+            "message_id": "6",
+            "prev_message_id": "5",
             "context": "contextA",
             "body": "message 2, contextA",
             "status": WAITING,
@@ -173,8 +173,8 @@ def get_waiting_messages_by_order():
         },
         {
             "time": "2020-01-01 02:50.000",
-            "message_id": "3",
-            "prev_message_id": "2",
+            "message_id": "7",
+            "prev_message_id": "6",
             "context": "contextA",
             "body": "message 3, contextA",
             "status": WAITING,
@@ -184,8 +184,8 @@ def get_waiting_messages_by_order():
         # contextB
         {
             "time": "2020-01-01 11:00.000",
-            "message_id": "3",
-            "prev_message_id": "2",
+            "message_id": "10",
+            "prev_message_id": "9",
             "context": "contextB",
             "body": "message 3, contextB",
             "status": WAITING,
@@ -193,12 +193,32 @@ def get_waiting_messages_by_order():
         },
         {
             "time": "2020-01-01 12:00.000",
-            "message_id": "4",
-            "prev_message_id": "3",
+            "message_id": "11",
+            "prev_message_id": "10",
             "context": "contextB",
             "body": "message 4, contextB",
             "status": WAITING,
             "destination": QUEUES_DETAILS[2]["routing_key"],
+        },
+
+        # contextC
+        {
+            "time": "2020-01-01 11:00.000",
+            "message_id": "11",
+            "prev_message_id": None,
+            "context": "contextC",
+            "body": "message 1, contextC",
+            "status": WAITING,
+            "destination": QUEUES_DETAILS[3]["routing_key"],
+        },
+        {
+            "time": "2020-01-01 12:00.000",
+            "message_id": "12",
+            "prev_message_id": "11",
+            "context": "contextC",
+            "body": "message 2, contextC",
+            "status": WAITING,
+            "destination": QUEUES_DETAILS[3]["routing_key"],
         },
     ]
 

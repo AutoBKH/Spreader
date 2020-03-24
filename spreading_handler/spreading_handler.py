@@ -50,6 +50,7 @@ def get_first_index_of_next_context(msgs, i):
 
 
 def send_message(m, rmq):
+    global sending_status
     sending_status = WIP
     message_id = m["message_id"]
     logger.info("changing status to 'Sending' in db for message: '%s'", message_id)
@@ -62,7 +63,12 @@ def send_message(m, rmq):
             routing_key,
             m["body"]
         )
-        rmq.enqueue(routing_key=routing_key, body=m["body"])
+
+        is_success = rmq.enqueue(routing_key=routing_key, body=m["body"])
+        if is_success:
+            on_ack(m)
+        else:
+            on_nack(m)
 
 
 # this message called in case of message enqueue success.
@@ -72,17 +78,25 @@ def on_ack(m):
     logger.info("message with id: %s was enqueued successfully", msg_id)
     logger.info("changing status for message id '%s' to 'Completed'", msg_id)
     change_message_status(msg_id, "Completed")
+    global sending_status
     sending_status = READY
 
 
 # this message called in case of message enqueue failure.
 def on_nack(m):
-    change_message_status(m["message_id"], "Waiting") # TODO: check it's 100% that the message didn't enqueue
-    logger.error("can't enqueue message with id: '%s'", m["message_id"])
+    change_message_status(m["message_id"], "Waiting")   # TODO: check it's 100% that the message didn't enqueue
+    logger.error(
+        "can't enqueue message with id: '%s', routing_key: '%s', body: '%s'. changing status in db back to 'Waiting'",
+        m["message_id"],
+        m["routing_key"],
+        m["body"]
+    )
+    global sending_status
     sending_status = FAILURE
 
 
 def spread_messages(cache, msgs):
+    global sending_status
     messages_length = len(messages)
     index = 0
 
@@ -100,6 +114,8 @@ def spread_messages(cache, msgs):
                 )
                 index = get_first_index_of_next_context(msgs, index)
                 sending_status = READY
+            else:
+                index += 1
         else:
             logger.warning(
                 "message with id: '%s' can't be sent yet. waiting to it's prev message id: '%s'",

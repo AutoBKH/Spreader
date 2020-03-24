@@ -1,20 +1,606 @@
-skipping all next messages with same context: 
-skipping all next messages with same context: 
-skipping all next messages with same context: contextA
-skipping all next messages with same context: contextA
-skipping all next messages with same context: contextB
-[INFO] - 2020-03-23 22:11:55,644 - spreading_handler.logger - skipping all next messages with same context: 
-[INFO] - 2020-03-23 22:11:55,645 - spreading_handler.logger - skipping all next messages with same context: 
-[INFO] - 2020-03-23 22:11:55,645 - spreading_handler.logger - skipping all next messages with same context: contextA
-[INFO] - 2020-03-23 22:11:55,645 - spreading_handler.logger - skipping all next messages with same context: contextA
-[INFO] - 2020-03-23 22:11:55,645 - spreading_handler.logger - skipping all next messages with same context: contextB
-[INFO] - 2020-03-23 22:35:54,712 - spreading_handler.logger - skipping all next messages with same context: ''
-[INFO] - 2020-03-23 22:35:54,713 - spreading_handler.logger - skipping all next messages with same context: ''
-[INFO] - 2020-03-23 22:35:54,713 - spreading_handler.logger - skipping all next messages with same context: 'contextA'
-[INFO] - 2020-03-23 22:35:54,713 - spreading_handler.logger - skipping all next messages with same context: 'contextA'
-[INFO] - 2020-03-23 22:35:54,713 - spreading_handler.logger - skipping all next messages with same context: 'contextB'
-[INFO] - 2020-03-23 22:36:07,687 - spreading_handler.logger - skipping all next messages with same context: ''
-[INFO] - 2020-03-23 22:36:07,688 - spreading_handler.logger - skipping all next messages with same context: ''
-[INFO] - 2020-03-23 22:36:07,688 - spreading_handler.logger - skipping all next messages with same context: 'contextA'
-[INFO] - 2020-03-23 22:36:07,688 - spreading_handler.logger - skipping all next messages with same context: 'contextA'
-[INFO] - 2020-03-23 22:36:07,688 - spreading_handler.logger - skipping all next messages with same context: 'contextB'
+{
+    "time": "2020-03-24 20:44:51,021",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: '2' is ready to be sent"
+}
+{
+    "time": "2020-03-24 20:44:51,022",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status to 'Sending' in db for message: '2'"
+}
+{
+    "time": "2020-03-24 20:44:51,022",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "enqueue message with id: '2' to RabbitMQ with routing key '0oka' and body: 'message 2'"
+}
+{
+    "time": "2020-03-24 20:44:51,031",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: 2 was enqueued successfully"
+}
+{
+    "time": "2020-03-24 20:44:51,031",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status for message id '2' to 'Completed'"
+}
+{
+    "time": "2020-03-24 20:44:51,031",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: '3' is ready to be sent"
+}
+{
+    "time": "2020-03-24 20:44:51,031",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status to 'Sending' in db for message: '3'"
+}
+{
+    "time": "2020-03-24 20:44:51,032",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "enqueue message with id: '3' to RabbitMQ with routing key '0oka' and body: 'message 3'"
+}
+{
+    "time": "2020-03-24 20:44:51,037",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: 3 was enqueued successfully"
+}
+{
+    "time": "2020-03-24 20:44:51,037",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status for message id '3' to 'Completed'"
+}
+{
+    "time": "2020-03-24 20:44:51,037",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: '4' is ready to be sent"
+}
+{
+    "time": "2020-03-24 20:44:51,037",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status to 'Sending' in db for message: '4'"
+}
+{
+    "time": "2020-03-24 20:44:51,037",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "enqueue message with id: '4' to RabbitMQ with routing key '0oka' and body: 'message 4'"
+}
+{
+    "time": "2020-03-24 20:44:51,041",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: 4 was enqueued successfully"
+}
+{
+    "time": "2020-03-24 20:44:51,041",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status for message id '4' to 'Completed'"
+}
+{
+    "time": "2020-03-24 20:44:51,041",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: '6' is ready to be sent"
+}
+{
+    "time": "2020-03-24 20:44:51,041",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status to 'Sending' in db for message: '6'"
+}
+{
+    "time": "2020-03-24 20:44:51,041",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "enqueue message with id: '6' to RabbitMQ with routing key '1oka' and body: 'message 2, contextA'"
+}
+{
+    "time": "2020-03-24 20:44:51,046",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: 6 was enqueued successfully"
+}
+{
+    "time": "2020-03-24 20:44:51,047",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status for message id '6' to 'Completed'"
+}
+{
+    "time": "2020-03-24 20:44:51,047",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: '7' is ready to be sent"
+}
+{
+    "time": "2020-03-24 20:44:51,047",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status to 'Sending' in db for message: '7'"
+}
+{
+    "time": "2020-03-24 20:44:51,047",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "enqueue message with id: '7' to RabbitMQ with routing key '1oka' and body: 'message 3, contextA'"
+}
+{
+    "time": "2020-03-24 20:44:51,052",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: 7 was enqueued successfully"
+}
+{
+    "time": "2020-03-24 20:44:51,052",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status for message id '7' to 'Completed'"
+}
+{
+    "time": "2020-03-24 20:44:51,052",
+    "name": "spreading_handler.logger",
+    "level": "WARNING",
+    "message": "message with id: '10' can't be sent yet. waiting to it's prev message id: '9'"
+}
+{
+    "time": "2020-03-24 20:44:51,052",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "skipping all next messages with same context: 'contextB'"
+}
+{
+    "time": "2020-03-24 21:13:20,810",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: '2' is ready to be sent"
+}
+{
+    "time": "2020-03-24 21:13:20,811",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status to 'Sending' in db for message: '2'"
+}
+{
+    "time": "2020-03-24 21:13:20,811",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "enqueue message with id: '2' to RabbitMQ with routing key '0oka' and body: 'message 2'"
+}
+{
+    "time": "2020-03-24 21:13:20,820",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: 2 was enqueued successfully"
+}
+{
+    "time": "2020-03-24 21:13:20,820",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status for message id '2' to 'Completed'"
+}
+{
+    "time": "2020-03-24 21:13:20,820",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: '3' is ready to be sent"
+}
+{
+    "time": "2020-03-24 21:13:20,820",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status to 'Sending' in db for message: '3'"
+}
+{
+    "time": "2020-03-24 21:13:20,820",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "enqueue message with id: '3' to RabbitMQ with routing key '0oka' and body: 'message 3'"
+}
+{
+    "time": "2020-03-24 21:13:20,824",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: 3 was enqueued successfully"
+}
+{
+    "time": "2020-03-24 21:13:20,825",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status for message id '3' to 'Completed'"
+}
+{
+    "time": "2020-03-24 21:13:20,825",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: '4' is ready to be sent"
+}
+{
+    "time": "2020-03-24 21:13:20,825",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status to 'Sending' in db for message: '4'"
+}
+{
+    "time": "2020-03-24 21:13:20,825",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "enqueue message with id: '4' to RabbitMQ with routing key '0oka' and body: 'message 4'"
+}
+{
+    "time": "2020-03-24 21:13:20,829",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: 4 was enqueued successfully"
+}
+{
+    "time": "2020-03-24 21:13:20,830",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status for message id '4' to 'Completed'"
+}
+{
+    "time": "2020-03-24 21:13:20,830",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: '6' is ready to be sent"
+}
+{
+    "time": "2020-03-24 21:13:20,830",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status to 'Sending' in db for message: '6'"
+}
+{
+    "time": "2020-03-24 21:13:20,830",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "enqueue message with id: '6' to RabbitMQ with routing key '1oka' and body: 'message 2, contextA'"
+}
+{
+    "time": "2020-03-24 21:13:20,835",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: 6 was enqueued successfully"
+}
+{
+    "time": "2020-03-24 21:13:20,835",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status for message id '6' to 'Completed'"
+}
+{
+    "time": "2020-03-24 21:13:20,836",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: '7' is ready to be sent"
+}
+{
+    "time": "2020-03-24 21:13:20,836",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status to 'Sending' in db for message: '7'"
+}
+{
+    "time": "2020-03-24 21:13:20,836",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "enqueue message with id: '7' to RabbitMQ with routing key '1oka' and body: 'message 3, contextA'"
+}
+{
+    "time": "2020-03-24 21:13:20,840",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: 7 was enqueued successfully"
+}
+{
+    "time": "2020-03-24 21:13:20,840",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status for message id '7' to 'Completed'"
+}
+{
+    "time": "2020-03-24 21:13:20,840",
+    "name": "spreading_handler.logger",
+    "level": "WARNING",
+    "message": "message with id: '10' can't be sent yet. waiting to it's prev message id: '9'"
+}
+{
+    "time": "2020-03-24 21:13:20,840",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "skipping all next messages with same context: 'contextB'"
+}
+{
+    "time": "2020-03-24 21:13:20,840",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: '11' is ready to be sent"
+}
+{
+    "time": "2020-03-24 21:13:20,841",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status to 'Sending' in db for message: '11'"
+}
+{
+    "time": "2020-03-24 21:13:20,841",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "enqueue message with id: '11' to RabbitMQ with routing key '3oka' and body: 'message 1, contextC'"
+}
+{
+    "time": "2020-03-24 21:13:20,846",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: 11 was enqueued successfully"
+}
+{
+    "time": "2020-03-24 21:13:20,846",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status for message id '11' to 'Completed'"
+}
+{
+    "time": "2020-03-24 21:13:20,846",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: '12' is ready to be sent"
+}
+{
+    "time": "2020-03-24 21:13:20,846",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status to 'Sending' in db for message: '12'"
+}
+{
+    "time": "2020-03-24 21:13:20,846",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "enqueue message with id: '12' to RabbitMQ with routing key '3oka' and body: 'message 2, contextC'"
+}
+{
+    "time": "2020-03-24 21:13:20,849",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: 12 was enqueued successfully"
+}
+{
+    "time": "2020-03-24 21:13:20,850",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status for message id '12' to 'Completed'"
+}
+{
+    "time": "2020-03-24 21:13:28,463",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: '2' is ready to be sent"
+}
+{
+    "time": "2020-03-24 21:13:28,464",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status to 'Sending' in db for message: '2'"
+}
+{
+    "time": "2020-03-24 21:13:28,464",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "enqueue message with id: '2' to RabbitMQ with routing key '0oka' and body: 'message 2'"
+}
+{
+    "time": "2020-03-24 21:13:28,473",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: 2 was enqueued successfully"
+}
+{
+    "time": "2020-03-24 21:13:28,474",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status for message id '2' to 'Completed'"
+}
+{
+    "time": "2020-03-24 21:13:28,474",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: '3' is ready to be sent"
+}
+{
+    "time": "2020-03-24 21:13:28,474",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status to 'Sending' in db for message: '3'"
+}
+{
+    "time": "2020-03-24 21:13:28,474",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "enqueue message with id: '3' to RabbitMQ with routing key '0oka' and body: 'message 3'"
+}
+{
+    "time": "2020-03-24 21:13:28,483",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: 3 was enqueued successfully"
+}
+{
+    "time": "2020-03-24 21:13:28,483",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status for message id '3' to 'Completed'"
+}
+{
+    "time": "2020-03-24 21:13:28,483",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: '4' is ready to be sent"
+}
+{
+    "time": "2020-03-24 21:13:28,483",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status to 'Sending' in db for message: '4'"
+}
+{
+    "time": "2020-03-24 21:13:28,484",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "enqueue message with id: '4' to RabbitMQ with routing key '0oka' and body: 'message 4'"
+}
+{
+    "time": "2020-03-24 21:13:28,489",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: 4 was enqueued successfully"
+}
+{
+    "time": "2020-03-24 21:13:28,489",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status for message id '4' to 'Completed'"
+}
+{
+    "time": "2020-03-24 21:13:28,489",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: '6' is ready to be sent"
+}
+{
+    "time": "2020-03-24 21:13:28,489",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status to 'Sending' in db for message: '6'"
+}
+{
+    "time": "2020-03-24 21:13:28,489",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "enqueue message with id: '6' to RabbitMQ with routing key '1oka' and body: 'message 2, contextA'"
+}
+{
+    "time": "2020-03-24 21:13:28,495",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: 6 was enqueued successfully"
+}
+{
+    "time": "2020-03-24 21:13:28,495",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status for message id '6' to 'Completed'"
+}
+{
+    "time": "2020-03-24 21:13:28,495",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: '7' is ready to be sent"
+}
+{
+    "time": "2020-03-24 21:13:28,495",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status to 'Sending' in db for message: '7'"
+}
+{
+    "time": "2020-03-24 21:13:28,495",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "enqueue message with id: '7' to RabbitMQ with routing key '1oka' and body: 'message 3, contextA'"
+}
+{
+    "time": "2020-03-24 21:13:28,500",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: 7 was enqueued successfully"
+}
+{
+    "time": "2020-03-24 21:13:28,501",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status for message id '7' to 'Completed'"
+}
+{
+    "time": "2020-03-24 21:13:28,501",
+    "name": "spreading_handler.logger",
+    "level": "WARNING",
+    "message": "message with id: '10' can't be sent yet. waiting to it's prev message id: '9'"
+}
+{
+    "time": "2020-03-24 21:13:28,501",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "skipping all next messages with same context: 'contextB'"
+}
+{
+    "time": "2020-03-24 21:13:28,501",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: '11' is ready to be sent"
+}
+{
+    "time": "2020-03-24 21:13:28,501",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status to 'Sending' in db for message: '11'"
+}
+{
+    "time": "2020-03-24 21:13:28,501",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "enqueue message with id: '11' to RabbitMQ with routing key '3oka' and body: 'message 1, contextC'"
+}
+{
+    "time": "2020-03-24 21:13:28,505",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: 11 was enqueued successfully"
+}
+{
+    "time": "2020-03-24 21:13:28,505",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status for message id '11' to 'Completed'"
+}
+{
+    "time": "2020-03-24 21:13:28,505",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: '12' is ready to be sent"
+}
+{
+    "time": "2020-03-24 21:13:28,505",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status to 'Sending' in db for message: '12'"
+}
+{
+    "time": "2020-03-24 21:13:28,505",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "enqueue message with id: '12' to RabbitMQ with routing key '3oka' and body: 'message 2, contextC'"
+}
+{
+    "time": "2020-03-24 21:13:28,508",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "message with id: 12 was enqueued successfully"
+}
+{
+    "time": "2020-03-24 21:13:28,509",
+    "name": "spreading_handler.logger",
+    "level": "INFO",
+    "message": "changing status for message id '12' to 'Completed'"
+}

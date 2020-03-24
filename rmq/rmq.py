@@ -3,15 +3,19 @@
 import pika
 from utils.utils import get_logger
 
-RMQ_IP = "10.100.102.48"
+RMQ_IP = "10.100.102.81"
+PERSISTENT_MODE = 2
 
 QUEUE0 = "queue_for_no_context"
 QUEUE1 = "cA"
 QUEUE2 = "cB"
+QUEUE3 = "cC"
+
 QUEUES_DETAILS = [
     {"queue": QUEUE0, "routing_key": "0oka"},
     {"queue": QUEUE1, "routing_key": "1oka"},
-    {"queue": QUEUE2, "routing_key": "2oka"}
+    {"queue": QUEUE2, "routing_key": "2oka"},
+    {"queue": QUEUE3, "routing_key": "3oka"},
 ]
 
 EXCHANGE = "amq.topic"
@@ -21,16 +25,12 @@ LOGGER_NAME = 'rmq.logger'
 logger = get_logger(LOGGER_NAME)
 
 
-def message_callback(ct, ch, method, properties, body):
-    logger.info(" [x] Received %r", body)
-
-
 def do_nothing():
-    pass
+    logger.info("'do_nothing' function was called")
 
 
 class RabbitClient:
-    def __init__(self, on_ack=do_nothing, on_nack=do_nothing):
+    def __init__(self):
         logger.info("RMQ init new instance")
 
         credentials = pika.PlainCredentials("guest", "guest")
@@ -41,35 +41,44 @@ class RabbitClient:
             credentials=credentials
         )
 
-        # establish tcp connection
-        self.connection = pika.BlockingConnection(connection_params)
+        logger.info("establishing tcp connection...")
+        try:
+            self.connection = pika.BlockingConnection(connection_params)
+        except pika.exceptions.AMQPConnectionError as e:
+            logger.error("can't establish a tcp connection. error: '%s'", e.args[0].exception)
+            exit(-1)
         self.channel = self.connection.channel()
-        # TODO: check how to add properly confirm_delivery
-        # self.channel.confirm_delivery(
-        #     ack_nack_callback=lambda frame: RabbitClient.__on_delivery_confirmation(frame, on_ack, on_nack)
-        # )
         self.__declare_queues()
 
-    def enqueue(self, routing_key, body):
-        logger.info("enqueue message with routing key: %s, and body: %s", routing_key, body)
-        self.channel.basic_publish(
-            exchange=EXCHANGE,
-            routing_key=routing_key,
-            body=body,
-            properties=pika.BasicProperties(
-                delivery_mode=2,  # make message persistent
-            )
-        )
+        logger.info("turn on delivery confirmations...")
 
-    def basic_consume(self, queue, auto_ack=True, on_message_callback=message_callback, consumer_tag=""):
-        logger.info("basic_consume")
-        self.channel.basic_consume(
-            queue=queue,
-            auto_ack=auto_ack,
-            on_message_callback=on_message_callback,
-            consumer_tag=consumer_tag
-        )
-        self.channel.start_consuming()
+        # The basic rules of confirm_delivery are as follows:
+        # 1) An un-routable mandatory or immediate message is confirmed right after the basic.return;
+        # 2) A transient message is confirmed the moment it is enqueued
+        # 3) A persistent message is confirmed when it is persisted to disk or when it is consumed on every queue
+        self.channel.confirm_delivery()
+
+    def enqueue(self, routing_key, body):
+        logger.info("trying enqueue a message with routing key: %s, and body: %s", routing_key, body)
+        try:
+            self.channel.basic_publish(
+                exchange=EXCHANGE,
+                routing_key=routing_key,
+                body=body,
+                properties=pika.BasicProperties(
+                    delivery_mode=PERSISTENT_MODE,
+                )
+            )
+            logger.info("enqueue with routing_key: '%s', and body: '%s' was successful", routing_key, body)
+            return True
+        except pika.exceptions.UnroutableError as e:
+            logger.error(
+                "couldn't publish message. the error is: %s",
+                routing_key,
+                body,
+                e.args[0].exception
+            )
+            return False
 
     def close_connection(self):
         logger.info("closing connection")
@@ -88,19 +97,10 @@ class RabbitClient:
         for index in range(len(QUEUES_DETAILS)):
             details = QUEUES_DETAILS[index]
             logger.info(
-                "Declare a durable queue: %s, and bind it to %s exchange with route: %s",
+                "Declare a durable queue: '%s', and bind it to '%s' exchange with routing_key: '%s'",
                 details["queue"],
                 EXCHANGE,
                 details["routing_key"]
             )
             self.channel.queue_declare(queue=details["queue"], durable=True)
             self.channel.queue_bind(queue=details["queue"], exchange=EXCHANGE, routing_key=details["routing_key"])
-
-    @staticmethod
-    def __on_delivery_confirmation(frame, on_ack, on_nack):
-        if isinstance(frame.method, pika.spec.Basic.Ack):
-            logger.info('Received confirmation: %s', frame.method)
-            on_ack()
-        else:
-            logger.error('Received negative confirmation: %s', frame.method)
-            on_nack()
