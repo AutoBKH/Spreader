@@ -11,13 +11,20 @@ LOGGER_NAME = 'spreading_handler.logger'
 logger = get_logger(LOGGER_NAME)
 
 """
-    * At this implementations, there are some assumptions:
-    * 1) every message have at most one dependency
+    * At this implementation, there are some assumptions:
+    * 1) Every message have no more than one dependency (prev_message_id)
     * 2) If messages x, y are at the same context and submit_time(x) < submit_time(y):
     *       a. x can be a dependency of y but not vise versa
     *       b. x must be sent before y
     * 3) Messages with context == "" means there is no context,
     *       this kinds of messages can always be sent because is has no dependencies
+    * 4) If a message x can't be sent (it's prev_message_id is not found for example),
+            so all messages in the same context which have later submit_time than message x will be skipped
+            till message x will be sent successfully
+
+    Questions:
+    1. Can be a situation with message x like the following:
+            a. x["prev_message_id"] == 8 and x["context"] == "" ? (message with no context that have a dependency?)
 """
 
 WIP = 0     # means: work in progress (Waiting for enqueue result)
@@ -84,7 +91,8 @@ def on_ack(m):
 
 # this message called in case of message enqueue failure.
 def on_nack(m):
-    change_message_status(m["message_id"], "Waiting")   # TODO: check it's 100% that the message didn't enqueue
+    # TODO: before changing status to "Waiting", check it's 100% that the message didn't enqueue in case of "on_nack"
+    change_message_status(m["message_id"], "Waiting")
     logger.error(
         "can't enqueue message with id: '%s', routing_key: '%s', body: '%s'. changing status in db back to 'Waiting'",
         m["message_id"],
@@ -109,8 +117,10 @@ def spread_messages(cache, msgs):
                 time.sleep(0.1)
             if sending_status == FAILURE:
                 logger.error(
-                    "failed enqueue message with id: '%s', skipping all messages with same context",
-                    msgs[index]["message_id"]
+                    "failed enqueue message with id: '%s', body: '%s', skipping all messages with same context '%s'",
+                    msgs[index]["message_id"],
+                    msgs[index]["body"],
+                    msgs[index]["context"],
                 )
                 index = get_first_index_of_next_context(msgs, index)
                 sending_status = READY

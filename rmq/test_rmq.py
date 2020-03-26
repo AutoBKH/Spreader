@@ -14,27 +14,46 @@ def init_queue():
 
 
 def test_rmq_client(rabbit):
+
+    # ensures no data in queues from previous tests
+    rabbit.reset_state()
+
+    # insert queues
     status = rabbit.enqueue(routing_key=QUEUES_DETAILS[0]["routing_key"], body=FIRST_MESSAGE)
     assert status is True
-    rabbit.basic_consume(
-        queue=QUEUES_DETAILS[0]["queue"],
-        on_message_callback=first_message_callback,
-    )
-
     status = rabbit.enqueue(routing_key=QUEUES_DETAILS[1]["routing_key"], body=SECOND_MESSAGE)
     assert status is True
 
-    # # rabbit.basic_consume(queue=QUEUES_DETAILS[1]["queue"], on_message_callback=second_message_callback)
+    # consume queues0
+    connection1 = rabbit.get_connection()
+    channel1 = connection1.channel()
+    channel1.basic_consume(
+        queue=QUEUES_DETAILS[0]["queue"],
+        on_message_callback=first_message_callback
+    )
+    connection1.close()
 
+    # consume queues1
+    connection2 = rabbit.get_connection()
+    channel2 = connection2.channel()
+    channel2.basic_consume(
+        queue=QUEUES_DETAILS[1]["queue"],
+        on_message_callback=second_message_callback
+    )
+    channel2.start_consuming()
+    connection2.close()
+
+    # reset state at the end of the test
+    rabbit.delete_all_queues()
     rabbit.close_connection()
 
 
 # helping functions
-def first_message_callback(ct, ch, method, properties, body):  # TODO: check ct and basic cancel
+def first_message_callback(ch, method, properties, body):
+    ch.stop_consuming()
     assert body == FIRST_MESSAGE
-    ch.basic_cancel(consumer_tag=ct, nowait=False)
 
 
-def second_message_callback(ct, ch, method, properties, body): # TODO: check ct and basic cancel
+def second_message_callback(ch, method, properties, body):
+    ch.stop_consuming()
     assert body == SECOND_MESSAGE
-    ch.basic_cancel('ct')

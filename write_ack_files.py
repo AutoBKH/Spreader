@@ -17,7 +17,7 @@ ACK_RECORD_PATTERN = """{
 def get_unique_id():
     return str(uuid.uuid4())
 
-# TODO: replace it with real messages from poller
+# TODO: replace it with real message ids from poller
 message_ids = [get_unique_id(), get_unique_id(), get_unique_id(), get_unique_id()]
 
 
