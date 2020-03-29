@@ -1,6 +1,6 @@
-# !/usr/bin/env
+# !/usr/bin/env python
 
-from rmq.rmq import QUEUES_DETAILS
+from rmq import QUEUES_DETAILS
 
 WAITING = "waiting"
 COMPLETED = "Completed"
