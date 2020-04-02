@@ -12,5 +12,10 @@ docker container create -p 5672:5672 -p 15672:15672 --name some-rabbit extended_
 
 # build postgres container
 docker load -i setupEnvironment/dockerImages/postgres.image
-docker build -t extended_postgres.image -f setupEnvironment/dockerfiles/extended_postgres.dockerfile .
-docker container create -p 5432:5432 --name some-postgres extended_postgres.image
+docker build -t my_posstgres.image -f setupEnvironment/dockerfiles/my_postgres.dockerfile .
+sudo docker volume create --name postgres-data
+docker container create \
+    -p 5432:5432 \
+    --name postgres \
+    -v postgres-data:/var/lib/postgresql/data \
+    my_posstgres.image
